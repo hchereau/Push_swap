@@ -8,7 +8,7 @@ SRCS += main.c
 
 vpath %.c $(PATH_SRCS)
 
-### HEADER ##################################################################
+### HEADER ####################################################################
 
 PATH_INCLUDES = includes/
 
@@ -48,7 +48,7 @@ $(NAME): $(LIBFT) $(OBJS)
 $(OBJS): $(PATH_OBJS)%.o: %.c $(HEADER)
 	@mkdir -p $(PATH_OBJS)
 	$(CC) $(CFLAGS) -c $< -o $@ $(PATH_INCLUDES)
-$LIBFT:
+$(LIBFT):
 	$(MAKE) -C $(PATH_LIBFT)
 
 clean:
@@ -63,4 +63,5 @@ re: fclean
 	$(MAKE)
 
 .PHONY: all clean fclean re
+
 
