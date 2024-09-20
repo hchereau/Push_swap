@@ -6,7 +6,7 @@
 /*   By: hucherea <hucherea@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/19 11:24:03 by hucherea          #+#    #+#             */
-/*   Updated: 2024/09/19 16:01:42 by hucherea         ###   ########.fr       */
+/*   Updated: 2024/09/20 16:26:49 by hucherea         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,7 +40,7 @@ static char	*get_string_list(int ac, char **av)
 	return (string_list);
 }
 
-static int	get_list(int **list, char *str)
+static size_t	get_list(long **list, char *str)
 {
 	char	**split;
 	size_t	i_list;
@@ -49,18 +49,39 @@ static int	get_list(int **list, char *str)
 	i_list = 0;
 	size_list = count_words(str, ' ');
 	split = ft_split(str, ' ');
-	*list = malloc(sizeof(int) * size_list);
+	*list = malloc(sizeof(long) * size_list);
 	if (*list != NULL && split != NULL)
 	{
 		while (*split)
 		{
-			(*list)[i_list] = ft_atoi(*split);
+			(*list)[i_list] = ft_atol(*split);
+			printf("list[%zu] = %ld\n", i_list, (*list)[i_list]);
 			++i_list;
 			++split;
 		}
 	}
 	free_strs(split - i_list);
 	return (size_list);
+}
+
+static t_list_state	get_numbers(size_t *list_size, long **list,
+	char *string_list)
+{
+	t_list_state	state;
+
+
+	*list_size = get_list(list, string_list);
+	if (is_valid_list(string_list, *list, *list_size) == true)
+	{
+		state = not_sorted;
+	}
+	else
+	{
+		state = error;
+		free(*list);
+	}
+	free(string_list);
+	return (state);
 }
 
 t_list_number	get_numbers_list(int ac, char **av)
@@ -74,9 +95,7 @@ t_list_number	get_numbers_list(int ac, char **av)
 	string_list = get_string_list(ac, av);
 	if (string_list != NULL)
 	{
-		list.size = get_list(&list.list, string_list);
-		list.state = not_sorted;
-		free(string_list);
+		list.state = get_numbers(&list.size, &list.list, string_list);
 	}
 	return (list);
 }
