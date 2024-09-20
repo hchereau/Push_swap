@@ -6,7 +6,7 @@
 /*   By: hucherea <hucherea@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/19 11:24:03 by hucherea          #+#    #+#             */
-/*   Updated: 2024/09/20 16:26:49 by hucherea         ###   ########.fr       */
+/*   Updated: 2024/09/20 18:09:22 by hucherea         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,13 +55,12 @@ static size_t	get_list(long **list, char *str)
 		while (*split)
 		{
 			(*list)[i_list] = ft_atol(*split);
-			printf("list[%zu] = %ld\n", i_list, (*list)[i_list]);
 			++i_list;
 			++split;
 		}
 	}
 	free_strs(split - i_list);
-	return (size_list);
+	return (i_list);
 }
 
 static t_list_state	get_numbers(size_t *list_size, long **list,

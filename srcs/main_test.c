@@ -6,7 +6,7 @@
 /*   By: hucherea <hucherea@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/19 10:26:57 by hucherea          #+#    #+#             */
-/*   Updated: 2024/09/20 16:50:57 by hucherea         ###   ########.fr       */
+/*   Updated: 2024/09/20 18:08:23 by hucherea         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,24 +31,26 @@ void	test_get_numbers_list(int ac, char **av, long *res, size_t test_number)
 	size_t			i;
 
 	list = get_numbers_list(ac, av);
-	if (list.list == NULL)
+	printf("list.state = %d\n", list.state);
+	if (list.list == NULL || list.state != not_sorted)
 	{
-		printf("%zu : %sRED%s Error: list is NULL\n", test_number, RED, WHITE);
+		printf("%zu : %sKO%s Error: list is NULL\n", test_number, RED, WHITE);
 		return ;
 	}
 	i = 0;
 	while (i < list.size - 1)
 	{
-		if (list.list[i] != res[i] && list.state == not_sorted)
+		if (list.list[i] != res[i])
 		{
-			printf("%zu : %sRED%s Error: list[%zu] is not a digit\n", test_number,
+			printf("%zu : %sKO%s Error: list[%zu] is not a digit\n", test_number,
 				RED, WHITE, i);
 			printf("list[%zu] = %ld\n", i, list.list[i]);
 			return ;
 		}
 		++i;
 	}
-	free(list.list);
+	printf("%zu : %sOK%s\n", test_number, GREEN, WHITE);
+	// free(list.list);
 }
 
 static void	test_get_numbers_list_errors(int ac, char **av, size_t test_number)
@@ -58,7 +60,7 @@ static void	test_get_numbers_list_errors(int ac, char **av, size_t test_number)
 	list = get_numbers_list(ac, av);
 	if (list.state != error)
 	{
-		printf("%zu : %sRED%s Error: state is not %d\n", test_number, RED, WHITE, error);
+		printf("%zu : %sKO%s Error: state is not %d\n", test_number, RED, WHITE, error);
 		print_list(list.list, list.size);
 		free(list.list);
 	}
@@ -74,11 +76,13 @@ int	main(void)
 	char	**av2;
 	long	*res;
 	char	**av3;
+	char	**av4;
+	char 	**av5;
 
 	res = malloc(sizeof(long) * 10);
 	for (size_t i = 0; i < 10; ++i)
 		res[i] = i + 1;
-	printf("TEST_GET_NUMBERS_LIST\n");
+	printf("TEST_GET_NUMBERS_LIST\n\n");
 
 	av = malloc(sizeof(char *) * 2);
 	av[0] = malloc(sizeof(char) * (ft_strlen("test") + 1));
@@ -104,18 +108,43 @@ int	main(void)
 	bzero(av3[1], ft_strlen("1 2 3 4 5 2147483649 7 8 9 10 11") + 1);
 	strcpy(av3[1], "1 2 3 4 5 2147483649 7 8 9 10 11");
 
+	av4 = malloc(sizeof(char *) * 2);
+	av4[0] = malloc(sizeof(char) * (ft_strlen("test") + 1));
+	bzero(av4[0], ft_strlen("test") + 1);
+	strcpy(av4[0], "test");
+	av4[1] = malloc(sizeof(char) * (ft_strlen("1 2 3 4 5 6 7 8 9 10 11") + 1));
+	bzero(av4[1], ft_strlen("1 2 3 4 5 6 6 8 9 10 11") + 1);
+	strcpy(av4[1], "1 2 3 4 5 6 6 8 9 10 11");
+
+	av5 = malloc(sizeof(char *) * 2);
+	av5[0] = malloc(sizeof(char) * (ft_strlen("test") + 1));
+	bzero(av5[0], ft_strlen("test") + 1);
+	strcpy(av5[0], "test");
+	av5[1] = malloc(sizeof(char) * (ft_strlen("1 2-3 4 5 6 7 8 9 10 11") + 1));
+	bzero(av5[1], ft_strlen("1 2-3 4 5 6 7 8 9 10 11") + 1);
+	strcpy(av5[1], "1 2-3 4 5 6 7 8 9 10 11");
+
 	test_get_numbers_list(2, av, res, 1);
 	test_get_numbers_list_errors(1, av2, 2);
 	test_get_numbers_list_errors(2, av2, 3);
 	test_get_numbers_list_errors(2, av3, 4);
+	test_get_numbers_list_errors(2, av4, 5);
+	test_get_numbers_list_errors(2, av5, 6);
 	free(res);
 	free(av[1]);
 	free(av[0]);
 	free(av);
+
 	free(av2[0]);
 	free(av2[1]);
 	free(av2);
+
 	free(av3[0]);
 	free(av3[1]);
 	free(av3);
+
+	free(av4[0]);
+	free(av4[1]);
+	free(av4);
+	return (0);
 }
