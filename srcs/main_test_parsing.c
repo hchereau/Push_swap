@@ -1,16 +1,16 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main_test.c                                        :+:      :+:    :+:   */
+/*   main_test_parsing.c                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: hucherea <hucherea@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/19 10:26:57 by hucherea          #+#    #+#             */
-/*   Updated: 2024/09/21 10:45:44 by hucherea         ###   ########.fr       */
+/*   Updated: 2024/09/21 17:02:31 by hucherea         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "push_swap.h"
+#include "parsing.h"
 #include <string.h>
 
 # define RED "\033[0;31m"
@@ -35,7 +35,6 @@ void	test_get_numbers_list(int ac, char **av, long *res, size_t test_number)
 	size_t			i;
 
 	list = get_numbers_list(ac, av);
-	printf("list.state = %d\n", list.state);
 	if (list.list == NULL || list.state != not_sorted)
 	{
 		printf("%zu : %sKO%s Error: list is NULL\n", test_number, RED, WHITE);
@@ -82,10 +81,12 @@ int	main(void)
 	char	**av3;
 	char	**av4;
 	char 	**av5;
+	char	**av6;
 
 	res = malloc(sizeof(long) * 10);
 	for (size_t i = 0; i < 10; ++i)
 		res[i] = i + 1;
+
 	printf("TEST_GET_NUMBERS_LIST\n\n");
 
 	av = malloc(sizeof(char *) * 2);
@@ -128,13 +129,23 @@ int	main(void)
 	bzero(av5[1], ft_strlen("1 2-3 4 5 6 7 8 9 10 11") + 1);
 	strcpy(av5[1], "1 2-3 4 5 6 7 8 9 10 11");
 
+	av6 = malloc(sizeof(char *) * 2);
+	av6[0] = malloc(sizeof(char) * (ft_strlen("test") + 1));
+	bzero(av6[0], ft_strlen("test") + 1);
+	strcpy(av6[0], "test");
+	av6[1] = malloc(sizeof(char) * (ft_strlen("2147483649") + 1));
+	bzero(av6[1], ft_strlen("2147483649") + 1);
+	strcpy(av6[1], "2147483649");
+
 	test_get_numbers_list(2, av, res, 1);
 	test_get_numbers_list_errors(1, av2, 2);
 	test_get_numbers_list_errors(2, av2, 3);
 	test_get_numbers_list_errors(2, av3, 4);
 	test_get_numbers_list_errors(2, av4, 5);
 	test_get_numbers_list_errors(2, av5, 6);
+	test_get_numbers_list_errors(2, av6, 7);
 	free(res);
+
 	free(av[1]);
 	free(av[0]);
 	free(av);
@@ -154,5 +165,9 @@ int	main(void)
 	free(av5[0]);
 	free(av5[1]);
 	free(av5);
+
+	free(av6[0]);
+	free(av6[1]);
+	free(av6);
 	return (0);
 }

@@ -6,11 +6,11 @@
 /*   By: hucherea <hucherea@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/19 11:24:03 by hucherea          #+#    #+#             */
-/*   Updated: 2024/09/20 18:09:22 by hucherea         ###   ########.fr       */
+/*   Updated: 2024/09/21 17:02:47 by hucherea         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "push_swap.h"
+#include "parsing.h"
 
 static char	*get_string_list(int ac, char **av)
 {
@@ -67,7 +67,6 @@ static t_list_state	get_numbers(size_t *list_size, long **list,
 	char *string_list)
 {
 	t_list_state	state;
-
 
 	*list_size = get_list(list, string_list);
 	if (is_valid_list(string_list, *list, *list_size) == true)

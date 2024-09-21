@@ -6,11 +6,11 @@
 /*   By: hucherea <hucherea@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/21 10:39:17 by hucherea          #+#    #+#             */
-/*   Updated: 2024/09/21 10:40:06 by hucherea         ###   ########.fr       */
+/*   Updated: 2024/09/21 17:03:06 by hucherea         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "push_swap.h"
+#include "parsing.h"
 
 static bool	is_valid_char(const char c)
 {

@@ -1,6 +1,5 @@
 NAME := push_swap
 
-
 ### LIBFT ####################################################################
 
 PATH_LIBFT := libft/
@@ -12,7 +11,7 @@ LIBFT = $(PATH_LIBFT)libft.a
 PATH_SRCS += srcs/
 
 # SRCS += main.c
-SRCS += main_test.c
+SRCS += main_test_parsing.c
 
 # srcs/parsing
 
@@ -21,6 +20,13 @@ PATH_SRCS += srcs/parsing/
 SRCS += get_numbers_list.c
 SRCS += is_valid_list.c
 SRCS += is_valid_string.c
+
+# srcs/algo
+
+PATH_SRCS += srcs/algo/
+
+SRCS += sort_numbers.c
+SRCS += sorting_process.c
 
 vpath %.c $(PATH_SRCS)
 
@@ -31,7 +37,9 @@ INCLUDES_LIBFT := $(PATH_LIBFT)includes/
 INCLUDES += -I $(INCLUDES_PUSH_SWAP)
 INCLUDES += -I $(INCLUDES_LIBFT)
 
-HEADER += $(INCLUDES_PUSH_SWAP)push_swap.h
+HEADERS += $(INCLUDES_PUSH_SWAP)push_swap.h
+HEADERS += $(INCLUDES_PUSH_SWAP)parsing.h
+HEADERS += $(INCLUDES_PUSH_SWAP)algo.h
 
 ### OBJS ######################################################################
 
@@ -49,7 +57,7 @@ CFLAGS += -Werror
 CFLAGS += -g3
 
 ifeq ($(debug), true)
-	CFLAGS += -fsanitize=address,undefined -g3
+	CFLAGS += -fsanitize=address,undefined
 endif
 
 ### COLORS ####################################################################

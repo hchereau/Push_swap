@@ -1,29 +1,30 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   push_swap.h                                        :+:      :+:    :+:   */
+/*   algo.h                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: hucherea <hucherea@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/09/21 10:49:14 by hucherea          #+#    #+#             */
-/*   Updated: 2024/09/21 17:40:38 by hucherea         ###   ########.fr       */
+/*   Created: 2024/09/21 17:12:38 by hucherea          #+#    #+#             */
+/*   Updated: 2024/09/21 17:57:02 by hucherea         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef PUSH_SWAP_H
-# define PUSH_SWAP_H
+#ifndef ALGO_H
+# define ALGO_H
 
-# include "libft.h"
-# include "parsing.h"
-# include "algo.h"
+# include "push_swap.h"
 
-typedef enum e_list_state{error = -1, not_sorted, sorted}	t_list_state;
+# define LIMIT_RATIO 200
+# define RATIO 0.1
+# define RATIO_BIG_LIST 0.04
 
-typedef struct s_list_number
+typedef struct s_window
 {
-	long			*list;
-	size_t			size;
-	t_list_state	state;
-}	t_list_number;
+	size_t	start;
+	size_t	end;
+}	t_window;
+
+void	sort_numbers(const t_list_number *list);
 
 #endif

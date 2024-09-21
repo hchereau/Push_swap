@@ -6,11 +6,11 @@
 /*   By: hucherea <hucherea@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/20 11:32:13 by hucherea          #+#    #+#             */
-/*   Updated: 2024/09/21 10:43:47 by hucherea         ###   ########.fr       */
+/*   Updated: 2024/09/21 17:02:56 by hucherea         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "push_swap.h"
+#include "parsing.h"
 
 static bool	is_duplicate_numbers(const long *list, size_t size_list)
 {
@@ -55,11 +55,9 @@ bool	is_valid_list(const char *string_list, const long *list,
 	bool	is_valid;
 
 	is_valid = is_valid_string(string_list);
-	printf("is_valid = %d\n", is_valid);
 	if (is_valid == true)
 	{
 		is_valid = is_valid_numbers(list, size_list);
 	}
 	return (is_valid);
 }
-
