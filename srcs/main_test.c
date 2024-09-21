@@ -6,12 +6,16 @@
 /*   By: hucherea <hucherea@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/19 10:26:57 by hucherea          #+#    #+#             */
-/*   Updated: 2024/09/20 18:08:23 by hucherea         ###   ########.fr       */
+/*   Updated: 2024/09/21 10:45:44 by hucherea         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 #include <string.h>
+
+# define RED "\033[0;31m"
+# define GREEN "\033[0;32m"
+# define WHITE "\033[0;37m"
 
 static void	print_list(long *list, size_t size)
 {
@@ -50,7 +54,7 @@ void	test_get_numbers_list(int ac, char **av, long *res, size_t test_number)
 		++i;
 	}
 	printf("%zu : %sOK%s\n", test_number, GREEN, WHITE);
-	// free(list.list);
+	free(list.list);
 }
 
 static void	test_get_numbers_list_errors(int ac, char **av, size_t test_number)
@@ -146,5 +150,9 @@ int	main(void)
 	free(av4[0]);
 	free(av4[1]);
 	free(av4);
+
+	free(av5[0]);
+	free(av5[1]);
+	free(av5);
 	return (0);
 }

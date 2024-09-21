@@ -6,7 +6,7 @@
 /*   By: hucherea <hucherea@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/19 10:24:34 by hucherea          #+#    #+#             */
-/*   Updated: 2024/09/20 16:04:43 by hucherea         ###   ########.fr       */
+/*   Updated: 2024/09/21 10:41:15 by hucherea         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,11 +14,6 @@
 # define PUSH_SWAP_H
 
 # include "libft.h"
-
-
-# define RED "\033[0;31m"
-# define GREEN "\033[0;32m"
-# define WHITE "\033[0;37m"
 
 typedef enum e_list_state{error = -1, not_sorted, sorted}	t_list_state;
 typedef enum e_number_state{valid_number, unvalid_number}	t_number_state;
@@ -34,6 +29,7 @@ typedef struct s_list_number
 
 t_list_number	get_numbers_list(int ac, char **av);
 bool			is_valid_list(const char *string_list, const long *list,
-	size_t size_list);
+					size_t size_list);
+bool			is_valid_string(const char *list);
 
 #endif

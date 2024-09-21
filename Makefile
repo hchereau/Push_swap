@@ -20,6 +20,7 @@ PATH_SRCS += srcs/parsing/
 
 SRCS += get_numbers_list.c
 SRCS += is_valid_list.c
+SRCS += is_valid_string.c
 
 vpath %.c $(PATH_SRCS)
 
