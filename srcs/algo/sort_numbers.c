@@ -6,11 +6,36 @@
 /*   By: hucherea <hucherea@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/21 17:12:09 by hucherea          #+#    #+#             */
-/*   Updated: 2024/09/21 17:58:40 by hucherea         ###   ########.fr       */
+/*   Updated: 2024/09/22 11:48:46 by hucherea         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "algo.h"
+
+long	*get_index_list(const long *list, const size_t size)
+{
+	long	*index;
+	size_t	i;
+	size_t	i_sort;
+	size_t	j;
+
+	index = malloc(sizeof(size_t) * size);
+	i = 0;
+	while (i < size)
+	{
+		i_sort = 0;
+		j = 0;
+		while (j < size)
+		{
+			if (list[i] > list[j] && i != j)
+				++i_sort;
+			++j;
+		}
+		index[i] = i_sort;
+		++i;
+	}
+	return (index);
+}
 
 static t_window	init_window(const size_t size)
 {
@@ -24,7 +49,6 @@ static t_window	init_window(const size_t size)
 		ratio = RATIO_BIG_LIST;
 	window.end = size * ratio;
 	return (window);
-
 }
 
 static void	init_index_list(t_list_number *index, const t_list_number *list)

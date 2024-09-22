@@ -11,7 +11,8 @@ LIBFT = $(PATH_LIBFT)libft.a
 PATH_SRCS += srcs/
 
 # SRCS += main.c
-SRCS += main_test_parsing.c
+#SRCS += main_test_parsing.c
+SRCS += main_test_sorting.c
 
 # srcs/parsing
 
@@ -27,6 +28,13 @@ PATH_SRCS += srcs/algo/
 
 SRCS += sort_numbers.c
 SRCS += sorting_process.c
+
+# srcs/algo/operations
+
+PATH_SRCS += srcs/algo/operations/
+
+SRCS += swap.c
+SRCS += push.c
 
 vpath %.c $(PATH_SRCS)
 

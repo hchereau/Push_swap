@@ -6,7 +6,7 @@
 /*   By: hucherea <hucherea@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/21 17:12:38 by hucherea          #+#    #+#             */
-/*   Updated: 2024/09/21 17:57:02 by hucherea         ###   ########.fr       */
+/*   Updated: 2024/09/22 11:58:50 by hucherea         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,5 +26,13 @@ typedef struct s_window
 }	t_window;
 
 void	sort_numbers(const t_list_number *list);
+void	sorting_process(t_list_number *index, t_window *window);
+long	*get_index_list(const long *list, const size_t size);
+
+// Operations
+
+void	swap_a(long *stack, const size_t size);
+void	swap_b(long *stack, const size_t size);
+void	push_a(long *stack_a, size_t *size_a, long *stack_b, size_t *size_b);
 
 #endif
