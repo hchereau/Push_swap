@@ -6,7 +6,7 @@
 /*   By: hucherea <hucherea@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/21 17:12:09 by hucherea          #+#    #+#             */
-/*   Updated: 2024/09/22 11:48:46 by hucherea         ###   ########.fr       */
+/*   Updated: 2024/09/22 16:46:40 by hucherea         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,12 +42,12 @@ static t_window	init_window(const size_t size)
 	float		ratio;
 	t_window	window;
 
-	window.start = 0;
+	window.min = 0;
 	if (size < LIMIT_RATIO)
 		ratio = RATIO;
 	else
 		ratio = RATIO_BIG_LIST;
-	window.end = size * ratio;
+	window.max = size * ratio;
 	return (window);
 }
 

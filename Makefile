@@ -22,12 +22,13 @@ SRCS += get_numbers_list.c
 SRCS += is_valid_list.c
 SRCS += is_valid_string.c
 
-# srcs/algo
+# srcs/algo/sort
 
-PATH_SRCS += srcs/algo/
+PATH_SRCS += srcs/algo/sort
 
 SRCS += sort_numbers.c
 SRCS += sorting_process.c
+SRCS += sort_small.c
 
 # srcs/algo/operations
 
@@ -35,6 +36,14 @@ PATH_SRCS += srcs/algo/operations/
 
 SRCS += swap.c
 SRCS += push.c
+SRCS += rotate.c
+SRCS += reverse_rotate.c
+
+# srcs/algo/utils
+
+PATH_SRCS += srcs/algo/utils/
+
+SRCS += is_sorted.c
 
 vpath %.c $(PATH_SRCS)
 
