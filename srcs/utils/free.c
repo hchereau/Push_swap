@@ -1,18 +1,19 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   free.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: hucherea <hucherea@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/09/19 10:24:10 by hucherea          #+#    #+#             */
-/*   Updated: 2024/09/24 15:49:21 by hucherea         ###   ########.fr       */
+/*   Created: 2024/09/24 15:59:13 by hucherea          #+#    #+#             */
+/*   Updated: 2024/09/24 15:59:39 by hucherea         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-int	main(int ac, char **av)
+void	free_list(t_list_number *list)
 {
-	sort_numbers(get_numbers_list(ac, av));
+	free(list->list);
+	free(list);
 }

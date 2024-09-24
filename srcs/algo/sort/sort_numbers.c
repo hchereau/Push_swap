@@ -6,7 +6,7 @@
 /*   By: hucherea <hucherea@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/21 17:12:09 by hucherea          #+#    #+#             */
-/*   Updated: 2024/09/22 16:46:40 by hucherea         ###   ########.fr       */
+/*   Updated: 2024/09/24 16:06:38 by hucherea         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,10 +59,12 @@ static void	init_index_list(t_list_number *index, const t_list_number *list)
 	{
 		index->state = error;
 	}
+	else
+		index->state = not_sorted;
 	free(list->list);
 }
 
-void	sort_numbers(const t_list_number *list)
+void	sort_numbers(t_list_number *list)
 {
 	t_list_number	index;
 	t_window		window;
@@ -77,4 +79,5 @@ void	sort_numbers(const t_list_number *list)
 		window = init_window(index.size);
 		sorting_process(&index, &window);
 	}
+	free(list);
 }

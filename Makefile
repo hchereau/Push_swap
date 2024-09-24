@@ -10,9 +10,9 @@ LIBFT = $(PATH_LIBFT)libft.a
 
 PATH_SRCS += srcs/
 
-# SRCS += main.c
-#SRCS += main_test_parsing.c
-SRCS += main_test_sorting.c
+SRCS += main.c
+# SRCS += main_test_parsing.c
+# SRCS += main_test_sorting.c
 
 # srcs/parsing
 
@@ -29,6 +29,8 @@ PATH_SRCS += srcs/algo/sort
 SRCS += sort_numbers.c
 SRCS += sorting_process.c
 SRCS += sort_small.c
+SRCS += sort_by_biggest.c
+SRCS += sort_by_window.c
 
 # srcs/algo/operations
 
@@ -39,11 +41,12 @@ SRCS += push.c
 SRCS += rotate.c
 SRCS += reverse_rotate.c
 
-# srcs/algo/utils
+# srcs/utils
 
-PATH_SRCS += srcs/algo/utils/
+PATH_SRCS += srcs/utils/
 
 SRCS += is_sorted.c
+SRCS += free.c
 
 vpath %.c $(PATH_SRCS)
 

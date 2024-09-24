@@ -6,7 +6,7 @@
 /*   By: hucherea <hucherea@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/19 11:24:03 by hucherea          #+#    #+#             */
-/*   Updated: 2024/09/22 15:57:40 by hucherea         ###   ########.fr       */
+/*   Updated: 2024/09/24 16:04:53 by hucherea         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -85,16 +85,17 @@ static t_list_state	get_numbers(size_t *list_size, long **list,
 t_list_number	*get_numbers_list(int ac, char **av)
 {
 	char			*string_list;
-	t_list_number	list;
+	t_list_number	*list;
 
-	list.state = error;
+	list = malloc(sizeof(t_list_number));
+	list->state = error;
 	if (ac < 2)
-		return (&list);
+		return (list);
 	string_list = get_string_list(ac, av);
 	if (string_list != NULL)
 	{
-		list.state = get_numbers(&list.size, &list.list, string_list);
+		list->state = get_numbers(&list->size, &list->list, string_list);
 	}
-	list.state = is_sorted(list.list, list.size);
-	return (&list);
+	list->state = is_sorted(list->list, list->size);
+	return (list);
 }
