@@ -47,6 +47,7 @@ PATH_SRCS += srcs/utils/
 
 SRCS += is_sorted.c
 SRCS += free.c
+SRCS += print_list.c
 
 vpath %.c $(PATH_SRCS)
 

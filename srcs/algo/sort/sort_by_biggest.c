@@ -6,23 +6,25 @@
 /*   By: hucherea <hucherea@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/24 14:18:27 by hucherea          #+#    #+#             */
-/*   Updated: 2024/09/24 15:21:58 by hucherea         ###   ########.fr       */
+/*   Updated: 2024/09/24 17:13:21 by hucherea         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "algo.h"
 
-static size_t	get_biggest_index(long *list, size_t size)
+size_t	get_biggest_index(long *list, size_t size)
 {
 	size_t	i;
 	size_t	i_biggest;
 
-	i = 0;
+	i = 1;
 	i_biggest = 0;
 	while (i < size)
 	{
 		if (list[i] > list[i_biggest])
+		{
 			i_biggest = i;
+		}
 		++i;
 	}
 	return (i_biggest);
@@ -44,6 +46,11 @@ static void	set_new_top_list(t_list_number *stack, size_t i_new_top)
 		{
 			reverse_rotate_b(stack->list, stack->size);
 			++i_new_top;
+		}
+		if (i_new_top == stack->size)
+		{
+			reverse_rotate_b(stack->list, stack->size);
+			i_new_top = 0;
 		}
 	}
 }

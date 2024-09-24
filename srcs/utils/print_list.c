@@ -1,41 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   swap.c                                             :+:      :+:    :+:   */
+/*   print_list.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: hucherea <hucherea@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/09/22 11:21:14 by hucherea          #+#    #+#             */
-/*   Updated: 2024/09/24 16:38:18 by hucherea         ###   ########.fr       */
+/*   Created: 2024/09/24 17:08:30 by hucherea          #+#    #+#             */
+/*   Updated: 2024/09/24 18:17:12 by hucherea         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "algo.h"
+#include "push_swap.h"
 
-static void	swap(long *stack)
+void	print_list(const long *list, const size_t size)
 {
-	long	tmp;
+	size_t	i;
 
-	tmp = stack[0];
-	stack[0] = stack[1];
-	stack[1] = tmp;
-}
-
-void	swap_a(long *stack)
-{
-	swap(stack);
-	ft_dprintf(STDOUT_FILENO, "sa\n");
-}
-
-void	swap_b(long *stack)
-{
-	swap(stack);
-	ft_dprintf(STDOUT_FILENO, "sb\n");
-}
-
-void	ss(long *stack_a, long *stack_b)
-{
-	swap_a(stack_a);
-	swap_b(stack_b);
-	ft_dprintf(STDOUT_FILENO, "ss\n");
+	i = 0;
+	while (i < size)
+	{
+		ft_putnbr_fd(list[i], STDOUT_FILENO);
+		ft_putchar_fd(' ', STDOUT_FILENO);
+		++i;
+	}
+	ft_putchar_fd('\n', STDOUT_FILENO);
 }

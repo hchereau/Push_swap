@@ -2,6 +2,7 @@
 	"files.associations": {
 		"push_swap.h": "c",
 		"libft.h": "c",
-		"string.h": "c"
+		"string.h": "c",
+		"algo.h": "c"
 	}
 }

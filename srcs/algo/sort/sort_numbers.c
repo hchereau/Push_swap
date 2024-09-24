@@ -6,7 +6,7 @@
 /*   By: hucherea <hucherea@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/21 17:12:09 by hucherea          #+#    #+#             */
-/*   Updated: 2024/09/24 16:06:38 by hucherea         ###   ########.fr       */
+/*   Updated: 2024/09/24 17:08:15 by hucherea         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -79,5 +79,6 @@ void	sort_numbers(t_list_number *list)
 		window = init_window(index.size);
 		sorting_process(&index, &window);
 	}
+	free(index.list);
 	free(list);
 }

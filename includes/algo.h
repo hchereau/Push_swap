@@ -6,7 +6,7 @@
 /*   By: hucherea <hucherea@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/21 17:12:38 by hucherea          #+#    #+#             */
-/*   Updated: 2024/09/24 16:01:51 by hucherea         ###   ########.fr       */
+/*   Updated: 2024/09/24 18:16:32 by hucherea         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,6 +48,7 @@ long	*get_index_list(const long *list, const size_t size);
 void	sort_small(long *stack, const size_t size, const t_stack_id stack_name);
 void	sort_by_window(t_stacks *stack, t_window *window);
 void	sort_by_biggest(t_stacks *stack);
+size_t	get_biggest_index(long *list, size_t size);
 
 
 // Operations

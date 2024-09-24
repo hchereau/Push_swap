@@ -6,7 +6,7 @@
 /*   By: hucherea <hucherea@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/21 10:49:14 by hucherea          #+#    #+#             */
-/*   Updated: 2024/09/24 15:59:53 by hucherea         ###   ########.fr       */
+/*   Updated: 2024/09/24 17:08:51 by hucherea         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,5 +28,6 @@ typedef struct s_list_number
 
 t_list_state	is_sorted(const long *stack, size_t size);
 void			free_list(t_list_number *list);
+void			print_list(const long *list, const size_t size);
 
 #endif

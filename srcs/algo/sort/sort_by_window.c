@@ -6,7 +6,7 @@
 /*   By: hucherea <hucherea@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/22 16:33:04 by hucherea          #+#    #+#             */
-/*   Updated: 2024/09/24 15:41:12 by hucherea         ###   ########.fr       */
+/*   Updated: 2024/09/24 17:39:28 by hucherea         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,8 +15,6 @@
 void	push_min_windows(t_stacks *stack, t_window *window)
 {
 	push_b(stack->a->list, &stack->a->size, stack->b->list, &stack->b->size);
-	++stack->b->size;
-	--stack->a->size;
 	++window->min;
 	++window->max;
 	rotate_b(stack->b->list, stack->b->size);
@@ -25,11 +23,8 @@ void	push_min_windows(t_stacks *stack, t_window *window)
 void	push_in_window(t_stacks *stack, t_window *window)
 {
 	push_b(stack->a->list, &stack->a->size, stack->b->list, &stack->b->size);
-	++stack->b->size;
-	--stack->a->size;
 	++window->min;
 	++window->max;
-
 }
 
 static bool	is_in_window(const size_t number, const t_window *window)
@@ -39,6 +34,8 @@ static bool	is_in_window(const size_t number, const t_window *window)
 
 void	sort_by_window(t_stacks *stack, t_window *window)
 {
+	const size_t	base_size = stack->a->size;
+
 	while (stack->a->size > SMALL_STACK)
 	{
 		if (is_in_window(stack->a->list[0], window) == true)
@@ -55,6 +52,11 @@ void	sort_by_window(t_stacks *stack, t_window *window)
 				reverse_rotate_a(stack->a->list, stack->a->size);
 			else
 				rotate_a(stack->a->list, stack->a->size);
+			if (stack->a->size == base_size)
+			{
+				if (is_sorted(stack->a->list, stack->a->size) == true)
+					break ;
+			}
 		}
 	}
 }
