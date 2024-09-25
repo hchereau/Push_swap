@@ -6,7 +6,7 @@
 /*   By: hucherea <hucherea@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/24 14:18:27 by hucherea          #+#    #+#             */
-/*   Updated: 2024/09/24 17:13:21 by hucherea         ###   ########.fr       */
+/*   Updated: 2024/09/25 15:11:30 by hucherea         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,7 @@ size_t	get_biggest_index(long *list, size_t size)
 	return (i_biggest);
 }
 
-static void	set_new_top_list(t_list_number *stack, size_t i_new_top)
+static void	set_new_top_list_b(t_list_number *stack, size_t i_new_top)
 {
 	if (i_new_top < stack->size / 2)
 	{
@@ -42,14 +42,39 @@ static void	set_new_top_list(t_list_number *stack, size_t i_new_top)
 	}
 	else
 	{
-		while (i_new_top < stack->size)
+		while (i_new_top < stack->size && i_new_top > 0)
 		{
 			reverse_rotate_b(stack->list, stack->size);
 			++i_new_top;
 		}
-		if (i_new_top == stack->size)
+		if (i_new_top == stack->size - 1)
 		{
 			reverse_rotate_b(stack->list, stack->size);
+			i_new_top = 0;
+		}
+	}
+}
+
+static void	set_new_top_list_a(t_list_number *stack, size_t i_new_top)
+{
+	if (i_new_top < stack->size / 2)
+	{
+		while (i_new_top > 0)
+		{
+			rotate_a(stack->list, stack->size);
+			--i_new_top;
+		}
+	}
+	else
+	{
+		while (i_new_top < stack->size && i_new_top > 0)
+		{
+			reverse_rotate_a(stack->list, stack->size);
+			++i_new_top;
+		}
+		if (i_new_top == stack->size - 1)
+		{
+			reverse_rotate_a(stack->list, stack->size);
 			i_new_top = 0;
 		}
 	}
@@ -60,7 +85,7 @@ static size_t	get_best_place_index(t_list_number *a, long nb)
 	size_t	i;
 	size_t	i_best;
 
-	i = 0;
+	i = 1;
 	i_best = 0;
 	while (i < a->size)
 	{
@@ -85,7 +110,7 @@ static void	setup_stack_for_pop(t_list_number *a, long nb)
 	size_t	i;
 
 	i = get_best_place_index(a, nb);
-	set_new_top_list(a, i);
+	set_new_top_list_a(a, i);
 }
 
 void	sort_by_biggest(t_stacks *stack)
@@ -94,9 +119,15 @@ void	sort_by_biggest(t_stacks *stack)
 
 	while (stack->b->size > 0)
 	{
+		// print_list(stack->a->list, stack->a->size);
+		// print_list(stack->b->list, stack->b->size);
 		i_biggest = get_biggest_index(stack->b->list, stack->b->size);
-		set_new_top_list(stack->b, i_biggest);
-		setup_stack_for_pop(stack->a, stack->b->list[i_biggest]);
+		// printf("stack->b->size = %ld\n", stack->b->size);
+		// printf("i_biggest = %ld\n", i_biggest);
+		// printf("biggest = %ld\n", stack->b->list[i_biggest]);
+		set_new_top_list_b(stack->b, i_biggest);
+		// printf("biggest = %ld\n", stack->b->list[i_biggest]);
+		setup_stack_for_pop(stack->a, stack->b->list[0]);
 		push_a(stack->a->list, &stack->a->size,
 			stack->b->list, &stack->b->size);
 	}
