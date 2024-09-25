@@ -6,7 +6,7 @@
 /*   By: hucherea <hucherea@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/21 17:12:09 by hucherea          #+#    #+#             */
-/*   Updated: 2024/09/24 17:08:15 by hucherea         ###   ########.fr       */
+/*   Updated: 2024/09/25 16:05:41 by hucherea         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,16 +69,23 @@ void	sort_numbers(t_list_number *list)
 	t_list_number	index;
 	t_window		window;
 
-	init_index_list(&index, list);
-	if (index.state == error)
-	{
-		ft_putstr_fd("Error_index\n", STDERR_FILENO);
-	}
+	if (list->state == sorted)
+		ft_dprintf(STDERR_FILENO, "List is already sorted\n");
+	else if (list->state == error)
+		ft_dprintf(STDERR_FILENO, "Error_list\n");
 	else
 	{
-		window = init_window(index.size);
-		sorting_process(&index, &window);
+		init_index_list(&index, list);
+		if (index.state == error)
+		{
+			ft_putstr_fd("Error_index\n", STDERR_FILENO);
+		}
+		else
+		{
+			window = init_window(index.size);
+			sorting_process(&index, &window);
+		}
+		free(index.list);
 	}
-	free(index.list);
 	free(list);
 }

@@ -6,7 +6,7 @@
 /*   By: hucherea <hucherea@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/19 11:24:03 by hucherea          #+#    #+#             */
-/*   Updated: 2024/09/24 16:04:53 by hucherea         ###   ########.fr       */
+/*   Updated: 2024/09/25 16:15:42 by hucherea         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -90,12 +90,17 @@ t_list_number	*get_numbers_list(int ac, char **av)
 	list = malloc(sizeof(t_list_number));
 	list->state = error;
 	if (ac < 2)
-		return (list);
+	{
+		ft_dprintf(STDERR_FILENO, "Usage: %s <file>\n", av[0]);
+		free(list);
+		exit(1);
+	}
 	string_list = get_string_list(ac, av);
 	if (string_list != NULL)
 	{
 		list->state = get_numbers(&list->size, &list->list, string_list);
 	}
-	list->state = is_sorted(list->list, list->size);
+	if (list->state != error)
+		list->state = is_sorted(list->list, list->size);
 	return (list);
 }
