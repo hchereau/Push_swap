@@ -6,7 +6,7 @@
 /*   By: hucherea <hucherea@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/21 17:52:27 by hucherea          #+#    #+#             */
-/*   Updated: 2024/09/26 13:01:32 by hucherea         ###   ########.fr       */
+/*   Updated: 2024/09/26 15:13:18 by hucherea         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,11 +20,10 @@ static bool	check_error(t_stacks *stack)
 			free(stack->b->list);
 		if (stack->a->state == sorted)
 		{
-			ft_dprintf(STDOUT_FILENO, "ALREADY_SORT\n");
 			free(stack->a->list);
 		}
 		else
-			ft_dprintf(STDERR_FILENO, "ERROR : stack_a malloc\n");
+			ft_dprintf(STDERR_FILENO, "Error\n");
 		return (true);
 	}
 	return (false);

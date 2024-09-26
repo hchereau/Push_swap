@@ -6,7 +6,7 @@
 /*   By: hucherea <hucherea@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/21 10:39:17 by hucherea          #+#    #+#             */
-/*   Updated: 2024/09/26 13:21:35 by hucherea         ###   ########.fr       */
+/*   Updated: 2024/09/26 15:49:08 by hucherea         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 static bool	is_valid_char(const char c)
 {
-	return (c == '-' || c == '+' || c == ' ');
+	return (c == '-' || c == '+');
 }
 
 static bool	is_real_number(const char *str)
@@ -22,10 +22,14 @@ static bool	is_real_number(const char *str)
 	size_t	i;
 
 	i = 0;
-	if (str[i] == ' ')
+	while (str[i] == ' ')
 		++i;
 	if (is_valid_char(str[i]) == true)
+	{
 		++i;
+		if (ft_isdigit(str[i]) == 0)
+			return (false);
+	}
 	while (ft_isdigit(str[i]) == 1)
 		++i;
 	if (str[i] == ' ' || str[i] == '\0')

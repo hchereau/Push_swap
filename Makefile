@@ -11,8 +11,6 @@ LIBFT = $(PATH_LIBFT)libft.a
 PATH_SRCS += srcs/
 
 SRCS += main.c
-# SRCS += main_test_parsing.c
-# SRCS += main_test_sorting.c
 
 # srcs/parsing
 

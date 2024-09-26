@@ -6,7 +6,7 @@
 /*   By: hucherea <hucherea@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/19 11:24:03 by hucherea          #+#    #+#             */
-/*   Updated: 2024/09/26 13:05:43 by hucherea         ###   ########.fr       */
+/*   Updated: 2024/09/26 15:14:09 by hucherea         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -91,7 +91,6 @@ t_list_number	*get_numbers_list(int ac, char **av)
 	list->state = error;
 	if (ac < 2)
 	{
-		ft_dprintf(STDERR_FILENO, "Usage: %s <file>\n", av[0]);
 		free(list);
 		exit(1);
 	}
