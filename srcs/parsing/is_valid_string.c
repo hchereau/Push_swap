@@ -6,7 +6,7 @@
 /*   By: hucherea <hucherea@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/21 10:39:17 by hucherea          #+#    #+#             */
-/*   Updated: 2024/09/21 17:03:06 by hucherea         ###   ########.fr       */
+/*   Updated: 2024/09/26 13:21:35 by hucherea         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,8 @@ static bool	is_real_number(const char *str)
 	size_t	i;
 
 	i = 0;
+	if (str[i] == ' ')
+		++i;
 	if (is_valid_char(str[i]) == true)
 		++i;
 	while (ft_isdigit(str[i]) == 1)
@@ -40,9 +42,7 @@ bool	is_valid_string(const char *list)
 		return (false);
 	while (list[i] != '\0')
 	{
-		if ((is_valid_char(list[i]) == false
-				&& ft_isdigit(list[i]) == 0)
-			|| is_real_number(list + i) == false)
+		if (is_real_number(list + i) == false)
 			return (false);
 		++i;
 	}

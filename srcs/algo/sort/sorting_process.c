@@ -6,7 +6,7 @@
 /*   By: hucherea <hucherea@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/21 17:52:27 by hucherea          #+#    #+#             */
-/*   Updated: 2024/09/25 15:11:38 by hucherea         ###   ########.fr       */
+/*   Updated: 2024/09/26 13:01:32 by hucherea         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,7 +61,6 @@ void	sorting_process(t_list_number *index, t_window *window)
 	sort_by_window(&stack, window);
 	sort_small(stack.a->list, stack.a->size, stack_a);
 	sort_by_biggest(&stack);
-	// print_list(stack.a->list, stack.a->size);
 	free(stack.b->list);
 	free(stack.b);
 }

@@ -6,7 +6,7 @@
 /*   By: hucherea <hucherea@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/19 11:24:03 by hucherea          #+#    #+#             */
-/*   Updated: 2024/09/25 16:15:42 by hucherea         ###   ########.fr       */
+/*   Updated: 2024/09/26 13:05:43 by hucherea         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -101,6 +101,10 @@ t_list_number	*get_numbers_list(int ac, char **av)
 		list->state = get_numbers(&list->size, &list->list, string_list);
 	}
 	if (list->state != error)
+	{
 		list->state = is_sorted(list->list, list->size);
+		if (list->state == sorted)
+			free(list->list);
+	}
 	return (list);
 }

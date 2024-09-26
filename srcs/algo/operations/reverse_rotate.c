@@ -6,7 +6,7 @@
 /*   By: hucherea <hucherea@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/22 13:46:45 by hucherea          #+#    #+#             */
-/*   Updated: 2024/09/22 13:53:23 by hucherea         ###   ########.fr       */
+/*   Updated: 2024/09/26 13:27:18 by hucherea         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,4 +47,3 @@ void	rrr(long *stack_a, size_t size_a, long *stack_b, size_t size_b)
 	reverse_rotate_b(stack_b, size_b);
 	ft_dprintf(STDOUT_FILENO, "rrr\n");
 }
-
