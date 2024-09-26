@@ -30,6 +30,7 @@ SRCS += sort_numbers.c
 SRCS += sorting_process.c
 SRCS += sort_small.c
 SRCS += sort_by_biggest.c
+SRCS += sort_by_biggest_utils.c
 SRCS += sort_by_window.c
 
 # srcs/algo/operations
@@ -96,7 +97,7 @@ $(NAME): $(LIBFT) $(OBJS)
 	@$(CC) $(CFLAGS) $(OBJS) -o $(NAME) $(LIBFT) $(INCLUDES)
 	@echo "$(GREEN)$(NAME) Compiled !$(WHITE)"
 
-$(OBJS): $(PATH_OBJS)%.o: %.c $(HEADER)
+$(OBJS): $(PATH_OBJS)%.o: %.c $(HEADERS)
 	@mkdir -p $(PATH_OBJS)
 	@$(CC) $(CFLAGS) -c $< -o $@ $(INCLUDES)
 

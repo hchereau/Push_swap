@@ -6,7 +6,7 @@
 /*   By: hucherea <hucherea@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/21 17:12:38 by hucherea          #+#    #+#             */
-/*   Updated: 2024/09/25 17:17:02 by hucherea         ###   ########.fr       */
+/*   Updated: 2024/09/26 12:34:10 by hucherea         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@
 
 # define LIMIT_RATIO 200
 # define RATIO 0.1
-# define RATIO_BIG_LIST 0.04
+# define RATIO_BIG_LIST 0.06
 # define SMALL_STACK 3
 
 typedef struct s_list_number	t_list_number;
