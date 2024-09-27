@@ -6,7 +6,7 @@
 /*   By: hucherea <hucherea@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/21 10:39:17 by hucherea          #+#    #+#             */
-/*   Updated: 2024/09/26 15:54:25 by hucherea         ###   ########.fr       */
+/*   Updated: 2024/09/27 13:07:36 by hucherea         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,6 +43,8 @@ bool	is_valid_string(const char *list)
 
 	i = 0;
 	if (list == NULL)
+		return (false);
+	if (list[0] == '\0')
 		return (false);
 	while (list[i] != '\0')
 	{

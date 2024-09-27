@@ -6,11 +6,19 @@
 /*   By: hucherea <hucherea@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/19 11:24:03 by hucherea          #+#    #+#             */
-/*   Updated: 2024/09/27 10:18:35 by hucherea         ###   ########.fr       */
+/*   Updated: 2024/09/27 13:15:57 by hucherea         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "parsing.h"
+
+static void	refresh_string_list(char **string_list, char **temp_string_list,
+	char *av)
+{
+	*string_list = ft_strjoin(*string_list, av);
+	free(*temp_string_list);
+	*temp_string_list = *string_list;
+}
 
 static char	*get_string_list(int ac, char **av)
 {
@@ -25,14 +33,15 @@ static char	*get_string_list(int ac, char **av)
 	temp_string_list = string_list;
 	while (i < ac)
 	{
-		string_list = ft_strjoin(string_list, av[i]);
-		free(temp_string_list);
-		temp_string_list = string_list;
+		if (is_valid_string(av[i]) == false)
+		{
+			free(string_list);
+			return (NULL);
+		}
+		refresh_string_list(&string_list, &temp_string_list, av[i]);
 		if (string_list == NULL)
 			break ;
-		string_list = ft_strjoin(string_list, " ");
-		free(temp_string_list);
-		temp_string_list = string_list;
+		refresh_string_list(&string_list, &temp_string_list, " ");
 		if (string_list == NULL)
 			break ;
 		++i;
@@ -47,6 +56,8 @@ static size_t	get_list(long **list, char *str)
 	size_t	size_list;
 
 	i_list = 0;
+	if (str == NULL || *str == '\0')
+		return (0);
 	size_list = count_words(str, ' ');
 	split = ft_split(str, ' ');
 	*list = malloc(sizeof(long) * size_list);
@@ -68,15 +79,22 @@ static t_list_state	get_numbers(size_t *list_size, long **list,
 {
 	t_list_state	state;
 
-	*list_size = get_list(list, string_list);
-	if (is_valid_list(string_list, *list, *list_size) == true)
+	if (is_valid_string(string_list) == false)
 	{
-		state = not_sorted;
+		state = error;
 	}
 	else
 	{
-		state = error;
-		free(*list);
+		*list_size = get_list(list, string_list);
+		if (is_valid_list(string_list, *list, *list_size) == true)
+		{
+			state = not_sorted;
+		}
+		else
+		{
+			state = error;
+			free(*list);
+		}
 	}
 	free(string_list);
 	return (state);
@@ -91,7 +109,6 @@ t_list_number	*get_numbers_list(int ac, char **av)
 	list->state = error;
 	if (ac < 2)
 	{
-		free(list);
 		exit(1);
 	}
 	string_list = get_string_list(ac, av);
