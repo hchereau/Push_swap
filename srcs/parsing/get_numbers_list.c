@@ -6,7 +6,7 @@
 /*   By: hucherea <hucherea@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/19 11:24:03 by hucherea          #+#    #+#             */
-/*   Updated: 2024/10/12 10:45:32 by hucherea         ###   ########.fr       */
+/*   Updated: 2024/10/12 11:04:49 by hucherea         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,7 +70,8 @@ static size_t	get_list(long **list, char *str)
 			++split;
 		}
 	}
-	free_strs(split - i_list);
+	if (split != NULL)
+		free_strs(split - i_list);
 	return (i_list);
 }
 
@@ -86,14 +87,16 @@ static t_list_state	get_numbers(size_t *list_size, long **list,
 	else
 	{
 		*list_size = get_list(list, string_list);
-		if (is_valid_list(string_list, *list, *list_size) == true)
+		if (is_valid_list(string_list, *list, *list_size) == true
+			&& *list != NULL)
 		{
-			state = not_sorted;
+			state = sorted;
 		}
 		else
 		{
 			state = error;
-			free(*list);
+			if (*list != NULL)
+				free(*list);
 		}
 	}
 	free(string_list);
@@ -105,24 +108,24 @@ t_list_number	*get_numbers_list(int ac, char **av)
 	char			*string_list;
 	t_list_number	*list;
 
-
 	if (ac < 2)
 	{
-		// printf("Error\n");
 		exit(1);
 	}
 	list = malloc(sizeof(t_list_number));
+	if (list == NULL)
+		exit(1);
 	list->state = error;
 	string_list = get_string_list(ac, av);
 	if (string_list != NULL)
 	{
 		list->state = get_numbers(&list->size, &list->list, string_list);
-	}
-	if (list->state != error)
-	{
-		list->state = is_sorted(list->list, list->size);
-		if (list->state == sorted)
-			free(list->list);
+		if (list->state != error)
+		{
+			list->state = is_sorted(list->list, list->size);
+			if (list->state == sorted)
+				free(list->list);
+		}
 	}
 	return (list);
 }

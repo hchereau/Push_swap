@@ -6,7 +6,7 @@
 /*   By: hucherea <hucherea@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/21 17:12:09 by hucherea          #+#    #+#             */
-/*   Updated: 2024/09/27 10:19:27 by hucherea         ###   ########.fr       */
+/*   Updated: 2024/10/12 11:06:35 by hucherea         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,8 @@ long	*get_index_list(const long *list, const size_t size)
 	size_t	j;
 
 	index = malloc(sizeof(size_t) * size);
+	if (index == NULL)
+		return (NULL);
 	i = 0;
 	while (i < size)
 	{

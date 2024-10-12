@@ -6,7 +6,7 @@
 /*   By: hucherea <hucherea@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/21 17:52:27 by hucherea          #+#    #+#             */
-/*   Updated: 2024/09/26 15:13:18 by hucherea         ###   ########.fr       */
+/*   Updated: 2024/10/12 11:08:39 by hucherea         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,11 @@
 
 static bool	check_error(t_stacks *stack)
 {
+	if (stack->a == NULL || stack->b == NULL)
+	{
+		ft_dprintf(STDERR_FILENO, "Error\n");
+		return (true);
+	}
 	if (stack->b->state == error || stack->a->state != not_sorted)
 	{
 		if (stack->b->state == not_sorted)
@@ -34,6 +39,12 @@ static t_stacks	init_stacks(t_list_number *index)
 	t_stacks	stack;
 
 	stack.b = malloc(sizeof(t_list_number));
+	if (stack.b == NULL)
+	{
+		stack.a = NULL;
+		stack.b = NULL;
+		return (stack);
+	}
 	stack.a = index;
 	if (index->state != error)
 	{
