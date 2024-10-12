@@ -6,7 +6,7 @@
 /*   By: hucherea <hucherea@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/19 11:24:03 by hucherea          #+#    #+#             */
-/*   Updated: 2024/09/27 13:15:57 by hucherea         ###   ########.fr       */
+/*   Updated: 2024/10/12 10:45:32 by hucherea         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -105,12 +105,14 @@ t_list_number	*get_numbers_list(int ac, char **av)
 	char			*string_list;
 	t_list_number	*list;
 
-	list = malloc(sizeof(t_list_number));
-	list->state = error;
+
 	if (ac < 2)
 	{
+		// printf("Error\n");
 		exit(1);
 	}
+	list = malloc(sizeof(t_list_number));
+	list->state = error;
 	string_list = get_string_list(ac, av);
 	if (string_list != NULL)
 	{
