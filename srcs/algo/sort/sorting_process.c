@@ -6,7 +6,7 @@
 /*   By: hucherea <hucherea@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/21 17:52:27 by hucherea          #+#    #+#             */
-/*   Updated: 2024/10/12 11:08:39 by hucherea         ###   ########.fr       */
+/*   Updated: 2024/10/12 11:12:38 by hucherea         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,7 +51,9 @@ static t_stacks	init_stacks(t_list_number *index)
 		stack.b->list = malloc(sizeof(long) * index->size);
 		if (stack.b->list == NULL)
 		{
-			stack.b->state = error;
+			free(stack.b);
+			stack.a = NULL;
+			stack.b = NULL;
 			return (stack);
 		}
 		stack.b->size = 0;

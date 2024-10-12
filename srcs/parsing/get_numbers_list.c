@@ -6,7 +6,7 @@
 /*   By: hucherea <hucherea@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/19 11:24:03 by hucherea          #+#    #+#             */
-/*   Updated: 2024/10/12 11:04:49 by hucherea         ###   ########.fr       */
+/*   Updated: 2024/10/12 11:13:48 by hucherea         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,6 +72,8 @@ static size_t	get_list(long **list, char *str)
 	}
 	if (split != NULL)
 		free_strs(split - i_list);
+	else if (*list != NULL)
+		free(*list);
 	return (i_list);
 }
 
